@@ -22,24 +22,26 @@ class ViewController: UIViewController {
     private lazy var lapButton: UIButton = {
         var button = UIButton(type: .system)
         button.setTitle(Strings.lapButtonTitle, for: .normal)
+        button.titleLabel?.font = UIFont(name: "San Francisco", size: 13)
         //button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        button.setTitleColor(.systemGray6, for: .normal)
-        button.backgroundColor = .systemGray
-        button.alpha = 0.45
+        button.setTitleColor(Colors.lapButtonTitleColor, for: .normal)
+        button.backgroundColor = Colors.lapButtonBackGroundColor
+        button.alpha = Colors.lapButtonAlpha
         button.layer.masksToBounds = true
-        button.layer.cornerRadius = 35
+        //button.layer.cornerRadius = 35
         return button
     }()
 
     private lazy var startButton: UIButton = {
         var button = UIButton(type: .system)
         button.setTitle(Strings.startButtonTitle, for: .normal)
+        button.titleLabel?.font = UIFont(name: "San Francisco", size: 13)
         //button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.backgroundColor = .systemGreen
-        button.alpha = 0.45
+        button.setTitleColor(Colors.startButtonTitleColor, for: .normal)
+        button.backgroundColor = Colors.startButtonBackGroundColor
+        button.alpha = Colors.startButtonAlpha
         button.layer.masksToBounds = true
-        button.layer.cornerRadius = 35
+        //button.layer.cornerRadius = 35
         return button
     }()
 
@@ -85,6 +87,7 @@ class ViewController: UIViewController {
         lapButton.heightAnchor.constraint(equalToConstant: Metric.lapButtonHeight).isActive = true
         lapButton.widthAnchor.constraint(equalToConstant: Metric.lapButtonHeight).isActive = true
 
+
         startButton.translatesAutoresizingMaskIntoConstraints = false
         //startButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -70).isActive = true
         startButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
@@ -101,6 +104,10 @@ class ViewController: UIViewController {
 
     private func setupView() {
         view.backgroundColor = .black
+
+        lapButton.layer.cornerRadius = Metric.lapButtonHeight / 2
+        startButton.layer.cornerRadius = Metric.lapButtonHeight / 2
+
     }
 
     // MARK: - Actions
@@ -113,6 +120,12 @@ class ViewController: UIViewController {
 extension ViewController{
     enum Colors {
         static let timeLableFontColor: UIColor = .white
+        static let lapButtonBackGroundColor: UIColor = .systemGray
+        static let lapButtonTitleColor: UIColor = .systemGray6
+        static let startButtonBackGroundColor: UIColor = .systemGreen
+        static let startButtonTitleColor: UIColor = .systemYellow
+        static let startButtonAlpha: CGFloat = 0.75
+        static let lapButtonAlpha: CGFloat = 0.45
     }
 
     enum Metric {
